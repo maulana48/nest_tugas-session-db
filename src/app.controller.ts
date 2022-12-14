@@ -37,7 +37,9 @@ export class AppController {
 
   @Get('/logout')
   logout(@Request() req, @Res() res: Response) {
-    req.logout();
+    req.logout(function(err) {
+      if (err) { console.log(err); }
+    });
     res.redirect('/');
   }
 }
