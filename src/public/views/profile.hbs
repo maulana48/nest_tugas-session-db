@@ -6,8 +6,8 @@
         <h2 class="mdl-card__title-text">About {{ user.username }}</h2>
       </div>
       <div>
-        <figure><img style="width: 300px; height: 300px;" src="{{ user.pet.picUrl }}">
-          <figcaption>{{ user.username }}'s friend {{ user.pet.name }}</figcaption>
+        <figure><img style="width: 300px; height: 300px;" src="{{ user.pets.0.image }}">
+          <figcaption>{{ user.username }}'s friend {{ user.pets.0.name }}</figcaption>
         </figure>
         <div class="mdl-card__actions mdl-card--border">
           <a class="mdl-button" href='/logout'>Log Out</a>

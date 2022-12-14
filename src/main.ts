@@ -8,6 +8,8 @@ import flash = require('connect-flash');
 import * as exphbs from 'express-handlebars';
 import * as passport from 'passport';
 
+declare const module: any;
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
@@ -27,6 +29,11 @@ async function bootstrap() {
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(flash());
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
 
   await app.listen(3000);
 }
